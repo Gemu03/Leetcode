@@ -6,3 +6,4 @@ class Solution:
                 nuevaPalabra.pop()
             else:
                 nuevaPalabra.append(letra)
+        return "".join(nuevaPalabra)
