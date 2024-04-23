@@ -1,0 +1,39 @@
+from typing import List
+
+class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        final = []
+        for i in nums1:
+            final.append(i)
+        for i in nums2:
+            final.append(i)
+
+        final.sort()
+        if len(final)%2==0:
+            return (final[len(final)//2]+final[len(final)//2-1])/2
+        else:
+            return final[len(final)//2]
+"""         if len(nums1)>len(nums2): return self.findMedianSortedArrays(nums2, nums1)
+        x, y = len(nums1), len(nums2)
+        low, high = 0, x
+        while low<=high:
+            partitionX = (low+high)//2
+            partitionY = (x+y+1)//2 - partitionX
+            maxX = float('-inf') if partitionX==0 else nums1[partitionX-1]
+            maxY = float('-inf') if partitionY==0 else nums2[partitionY-1]
+            minX = float('inf') if partitionX==x else nums1[partitionX]
+            minY = float('inf') if partitionY==y else nums2[partitionY]
+            if maxX<=minY and maxY<=minX:
+                if (x+y)%2==0:
+                    return (max(maxX, maxY) + min(minX, minY))/2
+                else:
+                    return max(maxX, maxY)
+            elif maxX>minY:
+                high = partitionX-1
+            else:
+                low = partitionX+1
+        return -1 """
+    
+s = Solution()
+print(s.findMedianSortedArrays([1,3], [2])) # 2.0
+print(s.findMedianSortedArrays([1,2], [3,4])) # 2.5
